@@ -18,7 +18,7 @@ export async function installAndroidSdk(apiLevel: string, target: string, arch: 
     const isOnMac = process.platform === 'darwin';
 
     if (!isOnMac) {
-      await exec.exec(`sh -c \\"sudo chown $USER:$USER ${process.env.ANDROID_HOME} -R`);
+      await exec.exec(`sh -c \\"sudo chown $(id -u):$(id -g) ${process.env.ANDROID_HOME} -R`);
     }
 
     const cmdlineToolsPath = `${process.env.ANDROID_HOME}/cmdline-tools`;
