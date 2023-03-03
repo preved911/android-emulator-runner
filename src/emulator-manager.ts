@@ -118,7 +118,7 @@ async function waitForDevice(): Promise<void> {
   let booted = false;
   let attempts = 0;
   const retryInterval = 2; // retry every 2 seconds
-  const maxAttempts = EMULATOR_BOOT_TIMEOUT_SECONDS / 2;
+  const maxAttempts = proccess.env.EMULATOR_BOOT_TIMEOUT_SECONDS || EMULATOR_BOOT_TIMEOUT_SECONDS / 2;
   while (!booted) {
     try {
       let result = '';
